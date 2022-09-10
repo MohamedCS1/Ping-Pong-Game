@@ -34,6 +34,19 @@ paddle2.shapesize(stretch_wid=4 ,stretch_len=1)
 paddle2.penup()
 paddle2.goto(350 ,0)
 
+score1 = 0
+
+score2 = 0
+
+score = turtle.Turtle()
+score.speed(0)
+score.color("white")
+score.penup()
+score.hideturtle()
+score.goto(0 ,260)
+score.write("Player one : {} Player two : {}".format(score1 ,score2) ,align="center" ,font=("" ,20 ,"bold"))
+
+
 def paddle1_move_up():
     y = paddle1.ycor()
     y += 20
@@ -79,10 +92,18 @@ while True:
     if ball.xcor() > 390 :
         ball.goto(0 ,0)
         ball.dx *= -1
+        score1 += 1
+        score.clear()
+        score.write("Player one : {} Player two : {}".format(score1 ,score2) ,align="center" ,font=("" ,20 ,"bold"))
+
     
     if ball.xcor() <- 390 :
         ball.goto(0 ,0)
         ball.dx *= -1
+        score2 += 1
+        score.clear()
+        score.write("Player one : {} Player two : {}".format(score1 ,score2) ,align="center" ,font=("" ,20 ,"bold"))
+    
 
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle2.ycor() + 40) and (ball.ycor() > paddle2.ycor() - 40):
         ball.setx(340)
