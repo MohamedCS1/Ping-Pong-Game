@@ -1,3 +1,6 @@
+from sqlite3 import Time
+from threading import Timer
+from time import sleep, time
 import turtle
 
 wind = turtle.Screen()
@@ -20,6 +23,8 @@ ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0 ,0)
+ball.dx = 0.1
+ball.dy = 0.1
 
 paddle2 = turtle.Turtle()
 paddle2.speed(0)
@@ -33,7 +38,6 @@ def paddle1_move_up():
     y = paddle1.ycor()
     y += 20
     paddle1.sety(y)
-
 
 def paddle1_move_down():
     y = paddle1.ycor()
@@ -60,6 +64,30 @@ wind.onkeypress(paddle2_move_down ,"s")
 
 while True:
     wind.update()
+
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    if ball.ycor() > 290 :
+        ball.sety(290)
+        ball.dy *= -1
     
+    if ball.ycor() <- 290 :
+        ball.sety(-290)
+        ball.dy *= -1
+
+    if ball.xcor() > 390 :
+        ball.goto(0 ,0)
+        ball.dx *= -1
     
-    
+    if ball.xcor() <- 390 :
+        ball.goto(0 ,0)
+        ball.dx *= -1
+
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle2.ycor() + 40) and (ball.ycor() > paddle2.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle1.ycor() + 40) and (ball.ycor() > paddle1.ycor() - 40):
+        ball.setx(-340)
+        ball.dx *= -1
