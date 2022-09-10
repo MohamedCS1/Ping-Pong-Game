@@ -29,6 +29,35 @@ paddle2.shapesize(stretch_wid=4 ,stretch_len=1)
 paddle2.penup()
 paddle2.goto(350 ,0)
 
+def paddle1_move_up():
+    y = paddle1.ycor()
+    y += 20
+    paddle1.sety(y)
+
+
+def paddle1_move_down():
+    y = paddle1.ycor()
+    y -= 20
+    paddle1.sety(y)
+
+
+def paddle2_move_up():
+    y = paddle2.ycor()
+    y += 20
+    paddle2.sety(y)
+
+def paddle2_move_down():
+    y = paddle2.ycor()
+    y -= 20
+    paddle2.sety(y)
+
+
+wind.listen()
+wind.onkeypress(paddle1_move_up ,"Up")
+wind.onkeypress(paddle1_move_down ,"Down")
+wind.onkeypress(paddle2_move_up ,"w")
+wind.onkeypress(paddle2_move_down ,"s")
+
 while True:
     wind.update()
     
